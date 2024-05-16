@@ -4,59 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WSAA Project</title>
-<style>
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-style: normal;
-        margin: 0;
-        padding: 20px;
-    }
-    
-    h1, h2 {
-        margin-bottom: 10px;
-    }
-    
-    p {
-        font-size: 14;
-    }
-    
-    form {
-        margin-bottom: 20px;
-    }
-    
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
-    
-    input[type="text"], 
-    input[type="tel"], {
-        width: auto;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-    
-    button {
-        padding: 8px 16px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
-    
-    button:hover {
-        background-color: #008159;
-    }
-    
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-    
-    li {
-        margin-bottom: 10px;
-    }
-</style>
+<link rel="stylesheet" href="styles.css">
+<script type="text/javascript" src="/static/static.js"></script>
+
 </head>
     <body>
 
@@ -85,7 +35,7 @@
                     <label for="department">Department</label>
                     <input type="text" id="department" name="department" required><br>
                     <label for="phoneNum">Phone number</label>
-                    <input type="tel" id="telNum" name="telNum" required><br>
+                    <input type="tel" id="telNum" name="phoneNum" required>
                     <button type="submit">Add Person</button>
                 </form>
 

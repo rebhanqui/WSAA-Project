@@ -63,8 +63,8 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
             personResults.appendChild(listItem);
         });
 
-        // For demonstration purposes, let's just clear the input field and display a message
-        searchResults.innerHTML += `<p>Search results for "${searchQuery}"</p>`;
+        // Clear the input field and display a message
+        personResults.innerHTML += `<p>Search results for "${searchQuery}"</p>`;
         document.getElementById('search').value = ''; // Clear input field
     })
     .catch(error => console.error('Error:', error));
