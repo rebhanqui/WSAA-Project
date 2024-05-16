@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSAA Project</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: normal;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    h1, h2 {
+        margin-bottom: 10px;
+    }
+    
+    p {
+        font-size: 14;
+    }
+    
+    form {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    input[type="text"], 
+    input[type="tel"], {
+        width: auto;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #008159;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    
+    li {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+    <body>
+
+        <h1>WSAA Data Search</h1>
+            <h2>Department Contacts</h2>
+                <p>Search and Add Contacts to the Department phonebook</p>
+
+            <h2>Details for Add Contacts Required:</h2>
+                <ul>
+                    <li>CID</li>
+                    <li>First Name</li>
+                    <li>Last Name</li>
+                    <li>Department</li>
+                    <li>Phone Number</li>
+                </ul>
+
+        <!-- Add Person Form -->
+            <h2>Add Person</h2>
+                <form id="addPersonForm">
+                    <label for="cid">CID</label>
+                    <input type="text" id="cid" name="cid" required><br>
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required><br>
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required><br>
+                    <label for="department">Department</label>
+                    <input type="text" id="department" name="department" required><br>
+                    <label for="phoneNum">Phone number</label>
+                    <input type="tel" id="telNum" name="telNum" required><br>
+                    <button type="submit">Add Person</button>
+                </form>
+
+        <!-- Search Contacts Form -->
+        <h2>Search Contacts</h2>
+        <form id="searchForm">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="search" placeholder="Find person">
+            <button type="submit">Search</button>
+        </form>
+        
+        <div id="searchResults">
+            <!-- Search results will be displayed here -->
+            <ul id="personResults"></ul>
+            <button id="clearResultsBtn">Clear Results</button>
+        </div>
+    </body>
+</html>
