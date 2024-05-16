@@ -1,75 +1,47 @@
+// Function to handle form submission for adding a person
 document.getElementById('addPersonForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-    
-    // Get form input values
-    const cid = document.getElementById('cid').value;
-    const firstName = document.getElementById('firstName').value;
-    const lastName = document.getElementById('lastName').value;
-    const department = document.getElementById('department').value;
-    const telNum = document.getElementById('telNum').value;
+    event.preventDefault(); // Prevent the default form submission
 
-    // Create a new contact object
-    const newContact = {
-        cid: cid,
-        firstName: firstName,
-        lastName: lastName,
-        department: department,
-        telNum: telNum
-    };
+    // Collect form data
+    let formData = new FormData(this);
 
-    // Send POST request to Flask server to create a new contact
+    // Send POST request to Flask server
     fetch('/contacts', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newContact)
+        body: formData
     })
     .then(response => response.json())
     .then(data => {
         console.log(data); // Log response from server
-        
-        // Display success message or update UI as needed
-        // ...
-        
-        // Clear input fields
-        document.getElementById('cid').value = '';
-        document.getElementById('firstName').value = '';
-        document.getElementById('lastName').value = '';
-        document.getElementById('department').value = '';
-        document.getElementById('telNum').value = '';
+        // Update UI or show a message here if needed
     })
     .catch(error => console.error('Error:', error));
 });
 
+// Function to handle search form submission
 document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent form submission
-    
+
     // Get search query
     const searchQuery = document.getElementById('search').value;
 
     // Send GET request to Flask server with search query as URL parameter
-    fetch(`/contacts/?search=${searchQuery}`)
+    fetch(`/contacts?search=${searchQuery}`)
     .then(response => response.json())
     .then(data => {
         console.log(data); // Log response from server
-        
         // Update UI with search results
-        let personResults = document.getElementById('personResults');
-        personResults.innerHTML = ''; // Clear previous results
-        data.forEach(contactslist => {
+        let searchResults = document.getElementById('searchResults');
+        searchResults.innerHTML = ''; // Clear previous results
+        data.forEach(contact => {
             let listItem = document.createElement('li');
-            listItem.textContent = `${contactslist.cid}, ${contactslist.firstName}, ${contactslist.lastName}, ${contactslist.department}, ${contactslist.telNum}`;
-            personResults.appendChild(listItem);
+            listItem.textContent = `CID: ${contact.cid}, Name: ${contact.firstName} ${contact.lastName}, Department: ${contact.department}, Phone: ${contact.telNum}`;
+            searchResults.appendChild(listItem);
         });
-
-        // Clear the input field and display a message
-        personResults.innerHTML += `<p>Search results for "${searchQuery}"</p>`;
-        document.getElementById('search').value = ''; // Clear input field
-    })
-    .catch(error => console.error('Error:', error));
+    });
 });
 
+// Function to handle clearing search results
 document.getElementById('clearResultsBtn').addEventListener('click', function() {
-    document.getElementById('personResults').innerHTML = ''; // Clear search results
+    document.getElementById('searchResults').innerHTML = ''; // Clear search results
 });
