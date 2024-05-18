@@ -7,12 +7,12 @@ class ContactsDAO:
     database=""
     cursor=""
     
-    def __init__(self):
+    def __init__(self, **database_config):
         #read from config file
-        self.host="localhost"
-        self.user="root"
-        self.password=""
-        self.database="contacts"
+        self.host = database_config.get("host", "127.0.0.1")
+        self.user = database_config.get('user', 'root')
+        self.password = database_config.get('password', '')
+        self.database = database_config.get('database', 'contacts')
         
     def getCursor(self):
         self.connection = mysql.connector.connect(
@@ -28,7 +28,7 @@ class ContactsDAO:
         self.connection.close()
         self.cursor.close()
         
-    def create(self, values):
+    def createContact(self, values):
         cursor = self.getCursor()
         sql = "INSERT INTO contactslist (cid, firstName, lastName, department, telNum) VALUES (%s, %s, %s, %s, %s);"
         cursor.execute(sql, values)
