@@ -17,7 +17,7 @@ def index():
 @app.route('/contactslist', methods=['GET']) #gets the data in contactslist table with error response if needed, helpful during debug and browser
 def getAll():
     if request.method == 'GET':
-        contacts = contactsDAO.getAll()  # Assuming getAll returns all contacts from the database
+        contacts = contactsDAO.getAll()  #returns all from database
         return jsonify(contacts), 200
     else:
         return jsonify({"error": "Method not allowed"}), 405

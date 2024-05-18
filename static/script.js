@@ -1,4 +1,4 @@
-// Function to show the create contact form
+//function to show the create contact form
 //https://www.w3schools.com/js/js_functions.asp
 function showCreate() {
     document.getElementById("createUpdateForm").style.display = "block";
@@ -45,7 +45,7 @@ function showUpdate(cid) {
     });
 }
 
-// Function to handle the creation of a new contact
+//create/add new contact
 function doCreate(event) {
     event.preventDefault(); //prevent empty, or duplicate form submission, as url took first imput and made it permanent first
 
