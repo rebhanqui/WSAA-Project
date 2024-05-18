@@ -15,7 +15,7 @@ class ContactsDAO:
         self.database="contacts"
         
     def getCursor(self):
-        self.connection = mysql.connect(
+        self.connection = mysql.connector.connect(
             host=self.host,
             user=self.user,
             password=self.password,
@@ -46,6 +46,14 @@ class ContactsDAO:
         results = cursor.fetchall()
         self.closeAll()
         return results
+    
+    def getMaxCID(self):
+        cursor = self.getCursor()
+        cursor.execute("SELECT MAX(cid) FROM contactslist;")
+        maxCID = cursor.fetchone()[0]
+        #print(f"Current MAX CID is: {maxCID}") #DEBUG/CHECK
+        self.closeAll()
+        return maxCID if maxCID is not None else 0
         
     def findByCID(self, cid):
         cursor = self.getCursor()
