@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics-->
+<!--https://www.geeksforgeeks.org/html-for-web-design/?ref=lbp-->
+<html>
+<head>
+    <title>Contact List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <!--link to ajax and static directory containing my script file-->
+    <script src="static/script.js"></script>
+    <!--connects to styles stylesheet-->
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+<body>
+    <h1>Contact List</h1>
+    <div><button id="button-showCreate" onclick="showCreate()">Add Contact</button><br/><br/></div>
+    <div>
+        <table border="1" id="contactTable">
+            <!--column headers in the table-->
+            <tr>
+                <th>CID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Department</th>
+                <th>Telephone Number</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            <!--placeholder-->
+            <tr id="0">
+                <td>1</td>
+                <td>John</td>
+                <td>Doe</td>
+                <td>Management</td>
+                <td>1234567890</td>
+                <td><button onclick="showUpdate(1)">Update</button></td>
+                <td><button onclick="doDelete(1)">Delete</button></td>
+            </tr>
+        </table>
+        <br/>
+    </div>
+    <div id="createUpdateForm" style="display:none">
+        <h2>Create a Contact</h2>
+        <!--hidden with display control until click on update contact, as auto generated if adding new-->
+        <span id="cidInput" style="display:none">
+            cid <input type="text" name="cid"><br/>
+        </span>
+        <!--input fields visible at all times unless updating-->
+        First Name <input type="text" name="firstName"><br/>
+        Last Name <input type="text" name="lastName"><br/>
+        Department <input type="text" name="department"><br/>
+        Tel Num <input type="text" name="telNum"><br/>
+        <!--buttong with event handling js-->
+        <span><button id="button-doCreate" onclick="doCreate(event)">Create</button></span>
+        <span><button id="button-doUpdate" onclick="doUpdate()">Update</button></span>
+    </div>
+
+</body>
+</html>
