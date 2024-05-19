@@ -46,4 +46,3 @@ VALUES
 (008, "Jessica", "Lee", "Management", 9012345678),
 (009, "Daniel", "Garcia", "Accounting", 6789012345),
 (010, "Amanda", "Wilson", "Customer Service", 3456789012);
-SELECT * FROM contactslist;
